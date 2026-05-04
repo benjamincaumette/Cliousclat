@@ -6,33 +6,23 @@ st.set_page_config(page_title="Le Code de Cliousclat", page_icon="🏺")
 # Style CSS pour forcer la lisibilité du texte
 st.markdown("""
     <style>
-    /* Fond de page */
-    .stApp { 
+    /* 1. Fond de page et texte général (Titres + Enigmes) en Marron */
+    .stApp, .stApp p, .stApp label, .stApp h1 { 
         background-color: #fdfaf5; 
+        color: #5D2E17 !important; 
     }
-    /* Texte des énigmes et titres en marron foncé */
-    .stApp p, .stApp label, .stApp h1, .stApp h2, .stApp h3 {
-        color: #5D2E17 !important;
-    }
-    /* Case de saisie : fond sombre et texte BLANC */
-    .stNumberInput input {
-        background-color: #5D2E17 !important;
+    
+    /* 2. Champs de saisie et Bouton : Fond Marron et Texte BLANC */
+    input, button, .stButton>button {
+        background-color: #8b4513 !important;
         color: white !important;
-        -webkit-text-fill-color: white !important;
+        -webkit-text-fill-color: white !important; /* Force le blanc sur iPhone */
+        border-radius: 10px;
     }
-    /* BOUTON : Fond marron et texte BLANC (identique aux chiffres) */
-    .stButton>button { 
-        background-color: #8b4513 !important; 
+
+    /* 3. Ajustement spécifique pour le texte du bouton */
+    .stButton>button p { 
         color: white !important; 
-        border-radius: 20px;
-        border: none;
-        width: 100%;
-        font-weight: bold;
-    }
-    /* Effet au survol du bouton pour plus de dynamisme */
-    .stButton>button:hover {
-        background-color: #5D2E17 !important;
-        color: white !important;
     }
     </style>
 """, unsafe_allow_html=True)
