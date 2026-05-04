@@ -7,26 +7,46 @@ st.set_page_config(
     layout="centered"
 )
 
-# --- STYLE MINIMAL PROPRE ---
+# --- CSS ROBUSTE (FIX DÉFINITIF COULEUR) ---
 st.markdown("""
 <style>
+
+/* Fond général */
 .stApp {
     background-color: #f8f5f0;
 }
 
+/* 🔥 Couleur de TOUT le texte (fix principal) */
+html, body, .stApp {
+    color: #3e2f1c !important;
+}
+
+/* Texte des widgets Streamlit */
+div, p, label, span {
+    color: #3e2f1c !important;
+}
+
+/* Champs de saisie */
+input {
+    color: #3e2f1c !important;
+}
+
+/* Titres */
 h1 {
     color: #8b4513 !important;
     text-align: center;
 }
 
+/* Cartes */
 .block {
     background-color: white;
     padding: 18px;
     border-radius: 12px;
     margin-bottom: 12px;
-    border: 1px solid #eee;
+    border: 1px solid #e5e5e5;
 }
 
+/* Bouton */
 .stButton>button {
     background-color: #8b4513;
     color: white;
@@ -34,9 +54,11 @@ h1 {
     padding: 8px 20px;
 }
 
+/* Barre de progression */
 .stProgress > div > div > div {
     background-color: #8b4513;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -54,15 +76,10 @@ questions = [
     {"q": "Âge de la fabrique en 2026 ?", "a": 124}
 ]
 
-# --- STATE ---
-if "validated" not in st.session_state:
-    st.session_state.validated = False
-
+# --- FORMULAIRE (STABLE) ---
 responses = []
 
-# --- FORMULAIRE (IMPORTANT POUR LA STABILITÉ) ---
 with st.form("quiz_form"):
-
     for i, item in enumerate(questions):
         st.markdown('<div class="block">', unsafe_allow_html=True)
 
@@ -79,23 +96,19 @@ with st.form("quiz_form"):
 
     submitted = st.form_submit_button("Vérifier")
 
-# --- TRAITEMENT ---
+# --- RÉSULTAT ---
 if submitted:
-    st.session_state.validated = True
-
     score = sum(1 for i, q in enumerate(questions) if responses[i] == q["a"])
     total_attendu = sum(q["a"] for q in questions)
     total_joueur = sum(responses)
 
     st.divider()
 
-    # Progression
     st.progress(score / len(questions))
     st.write(f"{score} / {len(questions)} bonnes réponses")
 
-    # Résultat
     if total_joueur == total_attendu:
         st.success("🎉 Bravo ! Code correct")
         st.write(f"Code final : **{total_attendu}**")
     else:
-        st.error("Code incorrect")
+        st.error("❌ Code incorrect")
