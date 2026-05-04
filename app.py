@@ -3,12 +3,27 @@ import streamlit as st
 # Configuration de la page
 st.set_page_config(page_title="Le Code de Cliousclat", page_icon="🏺")
 
-# Style CSS pour épurer l'interface
+# Style CSS pour forcer la lisibilité du texte
 st.markdown("""
     <style>
-    .stApp { background-color: #fdfaf5; }
-    h1 { color: #8b4513 !important; }
-    .stButton>button { background-color: #8b4513; color: white; border-radius: 20px; }
+    /* Fond de page */
+    .stApp { 
+        background-color: #fdfaf5; 
+    }
+    /* Forcer la couleur de TOUS les textes (énigmes, titres, labels) */
+    .stApp p, .stApp label, .stApp h1, .stApp h2, .stApp h3 {
+        color: #5D2E17 !important;
+    }
+    /* Personnalisation du bouton */
+    .stButton>button { 
+        background-color: #8b4513; 
+        color: white !important; 
+        border-radius: 20px; 
+    }
+    /* Style pour les champs de saisie */
+    .stNumberInput input {
+        color: #5D2E17 !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
