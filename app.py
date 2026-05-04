@@ -51,6 +51,11 @@ def aller_a_intro():
 if st.session_state.page == 'intro':
     st.title("🏺 Le Secret de l'Argile")
     
+    # AJOUT DE L'IMAGE ICI
+    st.image("https://postimg.cc/F1ryrT74", 
+             caption="Cliousclat, terre de potiers", 
+             use_container_width=True)
+    
     st.write("""
     ### Bienvenue à Cliousclat.
     
