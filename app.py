@@ -52,7 +52,7 @@ if st.session_state.page == 'intro':
     st.title("🏺 Le Secret de l'Argile")
     
     # AJOUT DE L'IMAGE ICI
-    st.image("https://postimg.cc/F1ryrT74", 
+    st.image("https://i.postimg.cc/SQ8DG54J/Gemini-Generated-Image-5im20b5im20b5im2.png", 
              caption="Cliousclat, terre de potiers", 
              use_container_width=True)
     
