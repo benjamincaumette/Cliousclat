@@ -1,114 +1,51 @@
 import streamlit as st
 
-# --- CONFIG ---
-st.set_page_config(
-    page_title="Le Code de Cliousclat",
-    page_icon="🏺",
-    layout="centered"
-)
+# Configuration de la page
+st.set_page_config(page_title="Le Code de Cliousclat", page_icon="🏺")
 
-# --- CSS ROBUSTE (FIX DÉFINITIF COULEUR) ---
+# Style CSS pour épurer l'interface
 st.markdown("""
-<style>
-
-/* Fond général */
-.stApp {
-    background-color: #f8f5f0;
-}
-
-/* 🔥 Couleur de TOUT le texte (fix principal) */
-html, body, .stApp {
-    color: #3e2f1c !important;
-}
-
-/* Texte des widgets Streamlit */
-div, p, label, span {
-    color: #3e2f1c !important;
-}
-
-/* Champs de saisie */
-input {
-    color: #3e2f1c !important;
-}
-
-/* Titres */
-h1 {
-    color: #8b4513 !important;
-    text-align: center;
-}
-
-/* Cartes */
-.block {
-    background-color: white;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    border: 1px solid #e5e5e5;
-}
-
-/* Bouton */
-.stButton>button {
-    background-color: #8b4513;
-    color: white;
-    border-radius: 8px;
-    padding: 8px 20px;
-}
-
-/* Barre de progression */
-.stProgress > div > div > div {
-    background-color: #8b4513;
-}
-
-</style>
+    <style>
+    .stApp { background-color: #fdfaf5; }
+    h1 { color: #8b4513 !important; }
+    .stButton>button { background-color: #8b4513; color: white; border-radius: 20px; }
+    </style>
 """, unsafe_allow_html=True)
 
-# --- TITRE ---
 st.title("🏺 Le Code de Cliousclat")
-st.write("Résous les énigmes pour trouver le code final.")
+st.write("Bienvenue dans le jeu de piste ! Trouve les nombres cachés dans le village.")
 
-# --- QUESTIONS ---
+# --- LES ÉNIGMES ---
 questions = [
-    {"q": "Volume total du grand four (m³) ?", "a": 20},
-    {"q": "Numéro de rue de la Poterie du Fer Rouge ?", "a": 664},
-    {"q": "Nombre de becs de la fontaine ?", "a": 2},
-    {"q": "Nombre de cloches dans le clocher ?", "a": 1},
-    {"q": "Distance Cliousclat → Privas (km) ?", "a": 24},
-    {"q": "Âge de la fabrique en 2026 ?", "a": 124}
+    {"q": "1. Quel est le volume total du grand four en m³ ?", "a": 20},
+    {"q": "2. Quel est le numéro de rue de la Poterie du Fer Rouge ?", "a": 664},
+    {"q": "3. Combien de becs verseurs possède la fontaine ?", "a": 2},
+    {"q": "4. Combien de cloches vois-tu dans le clocher ?", "a": 1},
+    {"q": "5. Distance Cliousclat - Privas indiquée au Belvédère (km) ?", "a": 24},
+    {"q": "6. Depuis combien d'années la fabrique existe-t-elle (en 2026) ?", "a": 124}
 ]
 
-# --- FORMULAIRE (STABLE) ---
 responses = []
+score = 0
 
-with st.form("quiz_form"):
-    for i, item in enumerate(questions):
-        st.markdown('<div class="block">', unsafe_allow_html=True)
+# Génération des champs de réponse
+for i, item in enumerate(questions):
+    res = st.number_input(item["q"], min_value=0, key=f"q{i}", step=1)
+    responses.append(res)
+    if res == item["a"]:
+        score += 1
 
-        res = st.number_input(
-            f"{i+1}. {item['q']}",
-            min_value=0,
-            step=1,
-            key=f"q{i}"
-        )
+st.divider()
 
-        responses.append(res)
-
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    submitted = st.form_submit_button("Vérifier")
-
-# --- RÉSULTAT ---
-if submitted:
-    score = sum(1 for i, q in enumerate(questions) if responses[i] == q["a"])
+# --- VALIDATION ---
+if st.button("Vérifier le Code Final"):
     total_attendu = sum(q["a"] for q in questions)
     total_joueur = sum(responses)
-
-    st.divider()
-
-    st.progress(score / len(questions))
-    st.write(f"{score} / {len(questions)} bonnes réponses")
-
+    
     if total_joueur == total_attendu:
-        st.success("🎉 Bravo ! Code correct")
-        st.write(f"Code final : **{total_attendu}**")
+        st.balloons()
+        st.success(f"Bravo ! Le code final est correct : {total_attendu}")
+        st.write("Félicitations, vous êtes un expert de Cliousclat !")
     else:
-        st.error("❌ Code incorrect")
+        st.error(f"Le code est incorrect. Vous avez {score} bonne(s) réponse(s) sur {len(questions)}.")
+        st.info("Continuez à chercher dans les ruelles !")
