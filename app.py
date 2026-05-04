@@ -10,19 +10,21 @@ st.markdown("""
     .stApp { 
         background-color: #fdfaf5; 
     }
-    /* Forcer la couleur de TOUS les textes (énigmes, titres, labels) */
+    /* Texte des énigmes et titres en marron foncé */
     .stApp p, .stApp label, .stApp h1, .stApp h2, .stApp h3 {
         color: #5D2E17 !important;
     }
-    /* Personnalisation du bouton */
+    /* Case de saisie : fond sombre et texte BLANC pour la visibilité */
+    .stNumberInput input {
+        background-color: #5D2E17 !important;
+        color: white !important;
+        -webkit-text-fill-color: white !important; /* Pour Safari/iPhone */
+    }
+    /* Bouton personnalisé */
     .stButton>button { 
         background-color: #8b4513; 
         color: white !important; 
         border-radius: 20px; 
-    }
-    /* Style pour les champs de saisie */
-    .stNumberInput input {
-        color: #5D2E17 !important;
     }
     </style>
 """, unsafe_allow_html=True)
