@@ -6,23 +6,63 @@ st.set_page_config(page_title="Le Code de Cliousclat", page_icon="🏺")
 # Style CSS pour forcer la lisibilité du texte
 st.markdown("""
     <style>
-    /* 1. Fond de page et texte général (Titres + Enigmes) en Marron */
-    .stApp, .stApp p, .stApp label, .stApp h1 { 
-        background-color: #fdfaf5; 
-        color: #5D2E17 !important; 
-    }
-    
-    /* 2. Champs de saisie et Bouton : Fond Marron et Texte BLANC */
-    input, button, .stButton>button {
-        background-color: #8b4513 !important;
-        color: white !important;
-        -webkit-text-fill-color: white !important; /* Force le blanc sur iPhone */
-        border-radius: 10px;
+    /* 1. CONFIGURATION GÉNÉRALE */
+    .stApp {
+        background-color: #FDFBF7; /* Blanc cassé / Papier */
     }
 
-    /* 3. Ajustement spécifique pour le texte du bouton */
-    .stButton>button p { 
-        color: white !important; 
+    /* 2. TITRES ET TEXTES (Marron Terre de Sienne) */
+    h1, h2, h3, p, label {
+        color: #5D2E46 !important; /* Marron profond */
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    /* 3. LES CHAMPS DE SAISIE (Look moderne) */
+    .stNumberInput div[data-baseweb="input"] {
+        background-color: #8B4513 !important; /* Fond Marron Poterie */
+        border-radius: 12px !important;
+        border: 2px solid #5D2E46 !important;
+        padding: 5px !important;
+    }
+
+    /* Chiffres à l'intérieur des cases */
+    .stNumberInput input {
+        color: #FFFFFF !important; /* BLANC PUR */
+        -webkit-text-fill-color: #FFFFFF !important;
+        font-size: 1.2rem !important;
+        font-weight: bold !important;
+        text-align: center !important;
+    }
+
+    /* 4. LE BOUTON FINAL (Bouton d'action élégant) */
+    .stButton > button {
+        width: 100% !important;
+        background-color: #5D2E46 !important; /* Couleur plus sombre pour le bouton */
+        color: #FFFFFF !important; /* TEXTE BLANC */
+        border: none !important;
+        padding: 15px !important;
+        border-radius: 50px !important; /* Arrondi complet */
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(93, 46, 70, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .stButton > button:hover {
+        background-color: #8B4513 !important; /* Change au survol */
+        transform: translateY(-2px);
+    }
+
+    /* 5. FIX POUR LE TEXTE DU BOUTON (Obligatoire sur Streamlit) */
+    .stButton > button div p {
+        color: #FFFFFF !important;
+    }
+    
+    /* 6. STYLE DES MESSAGES DE RÉUSSITE / ERREUR */
+    .stAlert {
+        border-radius: 12px !important;
     }
     </style>
 """, unsafe_allow_html=True)
