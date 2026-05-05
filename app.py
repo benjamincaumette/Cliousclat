@@ -76,7 +76,7 @@ Bonne chance !
     # 🎵 LECTEUR AUDIO
     st.divider()
     st.subheader("🎵 Ambiance musicale")
-    audio_file = open("files/cliousclat.mp3", "rb")
+    audio_file = open("Cliousclat.mp3", "rb")
     st.audio(audio_file, format="audio/mp3")
     
     st.divider()
