@@ -49,7 +49,7 @@ def aller_a_intro():
 
 # --- PAGE 1 : INTRODUCTION NARRATIVE ---
 if st.session_state.page == 'intro':
-    st.title("🏺 Le Secret de l'Argile")
+    st.title("🏺 La quête de Cliousclantine")
     
     # AJOUT DE L'IMAGE ICI
     st.image("https://i.postimg.cc/SQ8DG54J/Gemini-Generated-Image-5im20b5im20b5im2.png", 
@@ -57,13 +57,13 @@ if st.session_state.page == 'intro':
              use_container_width=True)
     
     st.write("""
-    ### Bienvenue à Cliousclat.
-    
-    Depuis des siècles, le feu des fours illumine ces collines et les mains des potiers façonnent la terre. Mais au-delà de l'artisanat, le village cache un secret accessible uniquement à ceux qui savent observer.
-    
-    Une combinaison de **six nombres** a été dissimulée à travers les ruelles, les pierres et les panoramas. Seul le cumul exact de ces chiffres vous permettra de déverrouiller le code final.
-    
-    *Prenez votre temps, observez les détails, et laissez le village vous raconter son histoire.*
+    ### Ravi de vous revoir, belle aventurière !
+
+**Cliousclantine** (la sœur de Mirmandoule) vous a préparé une surprise pour votre anniversaire... Malheureusement, elle a oublié le code à **3 chiffres** de son coffre !
+
+À vous de retrouver la combinaison en sillonnant les ruelles de Cliousclat et en résolvant les 6 énigmes qui s'y cachent...
+
+Bonne chance !
     """)
     
     st.divider()
@@ -91,7 +91,7 @@ elif st.session_state.page == 'jeu':
         if total_joueur == total_attendu:
             st.balloons()
             st.success(f"Félicitations ! Le code {total_joueur} est correct.")
-            st.subheader("Vous avez percé le secret de Cliousclat.")
+            st.subheader("Vous pouvez enfin deverouiller le coffre de Cliousclantine !")
         else:
             st.error("Le code est incorrect. Repartez à la recherche des chiffres manquants.")
 
