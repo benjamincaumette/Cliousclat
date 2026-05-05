@@ -84,7 +84,12 @@ Bonne chance !
 
 # --- PAGE 2 : LES ÉNIGMES ---
 elif st.session_state.page == 'jeu':
-    st.title("🧩 Les Énigmes")
+    st.title("Les Énigmes")
+    
+    # AJOUT DE L'IMAGE VILLAGE EN HAUT
+    st.image("village.png", use_container_width=True)
+    
+    st.divider()
     
     # Liste des énigmes
     q1 = st.number_input("1. Le volume total du grand four (m³)", min_value=0, step=1)
