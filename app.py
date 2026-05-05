@@ -59,7 +59,7 @@ if st.session_state.page == 'intro':
     st.title("🏺 La quête de Cliousclantine")
     
     # AJOUT DE L'IMAGE ICI
-    st.image("https://i.postimg.cc/SQ8DG54J/Gemini-Generated-Image-5im20b5im20b5im2.png", 
+    st.image("Gemini_Generated_Image_992g60992g60992g.png", 
              caption="Cliousclat, terre de potiers", 
              use_container_width=True)
     
