@@ -34,6 +34,13 @@ st.markdown("""
         border: none !important;
     }
     .stButton > button div p { color: #FFFFFF !important; }
+    
+    /* Style du lecteur audio */
+    audio {
+        width: 100% !important;
+        height: 50px !important;
+        border-radius: 12px !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -65,6 +72,12 @@ if st.session_state.page == 'intro':
 
 Bonne chance !
     """)
+    
+    # 🎵 LECTEUR AUDIO
+    st.divider()
+    st.subheader("🎵 Ambiance musicale")
+    audio_file = open("files/cliousclat.mp3", "rb")
+    st.audio(audio_file, format="audio/mp3")
     
     st.divider()
     st.button("Commencer l'exploration", on_click=aller_au_jeu)
