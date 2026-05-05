@@ -95,17 +95,22 @@ elif st.session_state.page == 'jeu':
     q6 = st.number_input("6. Âge de la fabrique en 2026 (ans)", min_value=0, step=1)
 
     st.divider()
+    
+    # Calcul de la somme attendue
+    total_attendu = 20 + 664 + 2 + 1 + 24 + 124  # Soit 835
+    
+    st.subheader("🔐 Saisissez le code à 3 chiffres")
+    st.write(f"*Indice : additionnez les 6 chiffres trouvés pour obtenir le code du coffre*")
+    
+    code_joueur = st.number_input("Entrez le code à 3 chiffres", min_value=0, max_value=999, step=1, key="code_input")
 
     if st.button("Vérifier le Code Final"):
-        # Calcul des réponses
-        total_joueur = q1 + q2 + q3 + q4 + q5 + q6
-        total_attendu = 20 + 664 + 2 + 1 + 24 + 124 # Soit 835
-        
-        if total_joueur == total_attendu:
+        if code_joueur == total_attendu:
             st.balloons()
-            st.success(f"Félicitations ! Le code {total_joueur} est correct.")
-            st.subheader("Vous pouvez enfin deverouiller le coffre de Cliousclantine !")
+            st.success(f"🎉 Félicitations ! Le code {code_joueur} est correct !")
+            st.subheader("Vous pouvez enfin déverrouiller le coffre de Cliousclantine !")
         else:
-            st.error("Le code est incorrect. Repartez à la recherche des chiffres manquants.")
+            st.error(f"❌ Le code {code_joueur} est incorrect. Repartez à la recherche des chiffres manquants.")
+            st.info(f"💡 La somme de vos réponses : {q1 + q2 + q3 + q4 + q5 + q6}")
 
     st.button("Retour au récit", on_click=aller_a_intro)
