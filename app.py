@@ -60,7 +60,7 @@ if st.session_state.page == 'intro':
     
     # AJOUT DE L'IMAGE ICI
     st.image("Gemini_Generated_Image_992g60992g60992g.png", 
-             caption="Cliousclat, terre de potiers", 
+             caption="Cliousclantine & Mirmandoule", 
              use_container_width=True)
     
     st.write("""
