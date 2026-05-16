@@ -68,7 +68,7 @@ if st.session_state.page == 'intro':
 
 **Cliousclantine** (la sœur de Mirmandoule) vous a préparé une surprise pour votre anniversaire... Malheureusement, elle a oublié le code à **3 chiffres** de son coffre !
 
-À vous de retrouver la combinaison en sillonnant les ruelles de Cliousclat et en résolvant les 6 énigmes qui s'y cachent...
+À vous de retrouver la combinaison en sillonnant les ruelles de son village et en résolvant les 6 énigmes qui s'y cachent...
 
 Bonne chance !
     """)
